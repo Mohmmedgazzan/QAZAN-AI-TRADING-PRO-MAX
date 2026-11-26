@@ -1,0 +1,29 @@
+FROM python:3.11-slim
+
+WORKDIR /app/backend
+
+# libgomp1 is required by XGBoost on Debian slim; curl is used by HEALTHCHECK
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY backend/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY backend/app ./app
+
+RUN mkdir -p /app/backend/data /app/backend/logs
+
+ENV PYTHONUNBUFFERED=1 \
+    APP_ENV=production \
+    BACKEND_HOST=0.0.0.0 \
+    BACKEND_PORT=8001 \
+    SQLITE_DB_PATH=/app/backend/data/qazan_trading.db \
+    LOG_FILE_PATH=/app/backend/logs/qazan_backend.log
+
+EXPOSE 8001
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+    CMD curl -fsS http://127.0.0.1:8001/api/v1/health || exit 1
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]

@@ -1,0 +1,6 @@
+{
+  "name": "QAZAN-AI-TRADING-PRO-MAX",
+  "description": "Open-source intelligent trading and market analysis platform powered by React, TypeScript, FastAPI, SQLite, TradingView Lightweight Charts, and local ML.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

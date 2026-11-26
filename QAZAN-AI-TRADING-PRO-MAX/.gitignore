@@ -1,0 +1,56 @@
+# Node & Frontend Build
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+npm-debug.log*
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Runtime Databases & Logs
+backend/data/
+backend/logs/
+backend/*.db
+backend/*.db-wal
+backend/*.db-shm
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.log
+
+# Generated Archives & Snapshots
+backups/
+.backups/
+
+# Android / Capacitor Build & Signing Keys
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+*.keystore
+*.jks
+*.apk
+*.aab
+
+# OS / Editor Artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

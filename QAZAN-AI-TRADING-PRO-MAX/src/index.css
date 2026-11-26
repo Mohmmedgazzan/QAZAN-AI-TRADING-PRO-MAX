@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    font-family: "IBM Plex Sans Arabic", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    color-scheme: light;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+  }
+
+  html[dir="ltr"] {
+    font-family: "Plus Jakarta Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    @apply bg-[#F4F5F7] text-slate-900 antialiased dark:bg-[#06080D] dark:text-slate-100;
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.px-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Institutional Terminal Surface & Control Primitives */
+.qazan-card {
+  @apply rounded-xl border border-slate-200/90 bg-white shadow-xs dark:border-slate-800/90 dark:bg-[#0B0F17] dark:shadow-none;
+}
+
+.qazan-card-gold {
+  @apply rounded-xl border border-amber-500/35 bg-white shadow-xs dark:border-[#D4AF37]/30 dark:bg-[#0B0F17] dark:shadow-[0_0_0_1px_rgba(212,175,55,0.06)];
+}
+
+.qazan-subpanel {
+  @apply rounded-lg border border-slate-200/80 bg-slate-50/90 dark:border-slate-800/80 dark:bg-[#111722];
+}
+
+.qazan-input {
+  @apply w-full min-h-[44px] px-3 rounded-lg border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#B88E14] dark:border-slate-800 dark:bg-[#070A10] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-[#D4AF37] transition-colors;
+}
+
+.qazan-btn-gold {
+  @apply min-h-[44px] inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#D4AF37] hover:bg-[#C39C28] active:bg-[#B08A1E] disabled:opacity-50 text-[#06080D] text-xs font-bold tracking-tight transition-colors whitespace-nowrap shrink-0 cursor-pointer;
+}
+
+.qazan-btn-secondary {
+  @apply min-h-[44px] inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-800 dark:border-slate-700/90 dark:bg-[#111722] dark:hover:bg-slate-800 dark:text-slate-200 text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer;
+}
